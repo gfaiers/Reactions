@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="google_play">market://details?id=com.gfaiers.reactions</string>
+    <string name="google_play_website">https://play.google.com/store/apps/details?id=com.gfaiers.reactions</string>
+    <string name="google_play_hangman">market://details?id=com.gfaiers.hangman</string>
+    <string name="google_play_website_hangman">https://play.google.com/store/apps/details?id=com.gfaiers.hangman</string>
+    <string name="website_url">http://www.gfaiers.com</string>
+
+
+    <string name="banner_ad_unit_id">ca-app-pub-7494504958391964/5003692133</string>
+    <string name="banner_ad_unit_id_java">ca-app-pub-7494504958391964~3526958937</string>
+
+    <string name="app_id">1032749079738</string>
+    <string name="achievement_perfect_10_seconds">CgkIurmRpYceEAIQAw</string>
+    <string name="achievement_perfect_15_seconds">CgkIurmRpYceEAIQBA</string>
+    <string name="achievement_50_seconds">CgkIurmRpYceEAIQBQ</string>
+    <string name="achievement_500_seconds">CgkIurmRpYceEAIQBg</string>
+    <string name="achievement_5000_seconds">CgkIurmRpYceEAIQBw</string>
+    <string name="achievement_50000_seconds">CgkIurmRpYceEAIQCA</string>
+    <string name="achievement_75_seconds">CgkIurmRpYceEAIQCQ</string>
+    <string name="achievement_750_seconds">CgkIurmRpYceEAIQCg</string>
+    <string name="achievement_7500_seconds">CgkIurmRpYceEAIQCw</string>
+    <string name="achievement_75000_seconds">CgkIurmRpYceEAIQDA</string>
+    <string name="leaderboard_ten_seconds">CgkIurmRpYceEAIQAQ</string>
+    <string name="leaderboard_fifteen_seconds">CgkIurmRpYceEAIQAg</string>
+
+</resources>
