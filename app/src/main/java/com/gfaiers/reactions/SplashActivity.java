@@ -189,7 +189,6 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
                 intentMain.putExtra("settingNoRate",booNoRate);
                 intentMain.putExtra("settingTimesRan", lngTimesRan);
                 startActivityForResult(intentMain, result);
-                finish();
             }
         }.start();
     }

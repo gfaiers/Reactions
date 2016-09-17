@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 intentNewGameShort.putExtra("settingFirstPlay", booFirstPlay);
                 intentNewGameShort.putExtra("settingNoRate",booNoRate);
                 intentNewGameShort.putExtra("settingTimesRan", lngTimesRan);
+                intentNewGameShort.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivityForResult(intentNewGameShort, result);
-                finish();
             }
         });
 
@@ -103,8 +103,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 intentNewGameLong.putExtra("settingFirstPlay", booFirstPlay);
                 intentNewGameLong.putExtra("settingNoRate",booNoRate);
                 intentNewGameLong.putExtra("settingTimesRan", lngTimesRan);
+                intentNewGameLong.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivityForResult(intentNewGameLong, result);
-                finish();
             }
         });
         buttonHighScores.setOnClickListener(new View.OnClickListener() {
@@ -169,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     protected void onStop(){
         super.onStop();
         mGoogleApiClient.disconnect();
+
     }
 
     @Override
