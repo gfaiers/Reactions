@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -362,26 +363,28 @@ public class GameActivity extends AppCompatActivity implements GoogleApiClient.C
                         }
                         // DISPLAY Dialog Fragment stating the score, and if they want to play again
                         // If new top score, display new top score message
-                        if (booLong) {
-                            // Fifteen seconds game
-                            Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_75_seconds), 1);
-                            Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_750_seconds), 1);
-                            Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_7500_seconds), 1);
-                            Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_75000_seconds), 1);
-                            if (!booBadTouch) {
-                                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_perfect_15_seconds));
+                        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+                            if (booLong) {
+                                // Fifteen seconds game
+                                Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_75_seconds), 1);
+                                Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_750_seconds), 1);
+                                Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_7500_seconds), 1);
+                                Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_75000_seconds), 1);
+                                if (!booBadTouch) {
+                                    Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_perfect_15_seconds));
+                                }
+                                Games.Leaderboards.submitScore(mGoogleApiClient, getResources().getString(R.string.leaderboard_fifteen_seconds), intScore);
+                            } else {
+                                // Ten seconds game
+                                Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_50_seconds), 1);
+                                Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_500_seconds), 1);
+                                Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_5000_seconds), 1);
+                                Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_50000_seconds), 1);
+                                if (!booBadTouch) {
+                                    Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_perfect_10_seconds));
+                                }
+                                Games.Leaderboards.submitScore(mGoogleApiClient, getResources().getString(R.string.leaderboard_ten_seconds), intScore);
                             }
-                            Games.Leaderboards.submitScore(mGoogleApiClient, getResources().getString(R.string.leaderboard_fifteen_seconds), intScore);
-                        } else {
-                            // Ten seconds game
-                            Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_50_seconds), 1);
-                            Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_500_seconds), 1);
-                            Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_5000_seconds), 1);
-                            Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_50000_seconds), 1);
-                            if (!booBadTouch) {
-                                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_perfect_10_seconds));
-                            }
-                            Games.Leaderboards.submitScore(mGoogleApiClient, getResources().getString(R.string.leaderboard_ten_seconds), intScore);
                         }
                     }
                 }.start();

@@ -66,7 +66,7 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_secret_achievement));
+                if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_secret_achievement));
                 // Take to the Play Store and load the app on there
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 //Try Google play
