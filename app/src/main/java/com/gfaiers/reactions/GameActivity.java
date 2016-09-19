@@ -47,8 +47,9 @@ public class GameActivity extends AppCompatActivity implements GoogleApiClient.C
             intGameLengthMS = 0, intGameLength = 0, intHighScore, intCount = R.drawable.three,
             intHighScoreTen, intHighScoreFifteen;
     static String strCounter = "", strGameLength = "", strScore = "";
-    static boolean booLong = false, booBadTouch = false, booFirstPlay, booNoRate;
+    static boolean booLong = false, booBadTouch = false, booFirstPlay, booNoRate, booTempDismiss;
     static long lngTimesRan;
+
     Timer locTimer;
     CountDownTimer gTimer, stTimer;
     LocationTimer locationTimer;
@@ -79,6 +80,7 @@ public class GameActivity extends AppCompatActivity implements GoogleApiClient.C
         booFirstPlay = getIntent().getBooleanExtra("settingFirstPlay", true);
         booNoRate = getIntent().getBooleanExtra("settingNoRate", false);
         lngTimesRan = getIntent().getLongExtra("settingTimesRan", 0);
+        booTempDismiss = getIntent().getBooleanExtra("booTempDismiss", false);
 
         booLong = (intGameLengthMS == 15000);
         if (booLong) {
@@ -377,7 +379,7 @@ public class GameActivity extends AppCompatActivity implements GoogleApiClient.C
                             Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_5000_seconds), 1);
                             Games.Achievements.increment(mGoogleApiClient, getResources().getString(R.string.achievement_50000_seconds), 1);
                             if (!booBadTouch) {
-                                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_perfect_15_seconds));
+                                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_perfect_10_seconds));
                             }
                             Games.Leaderboards.submitScore(mGoogleApiClient, getResources().getString(R.string.leaderboard_ten_seconds), intScore);
                         }
@@ -596,12 +598,14 @@ public class GameActivity extends AppCompatActivity implements GoogleApiClient.C
                 Intent intentMain = new Intent(GameActivity.this, MainActivity.class);
                 int result = 1;
                 if (booLong) {
+                    intentMain.putExtra("booTempDismiss", booTempDismiss);
                     intentMain.putExtra("intHighScoreTen", intHighScoreTen);
                     intentMain.putExtra("intHighScoreFifteen", intHighScore);
                     intentMain.putExtra("settingFirstPlay", booFirstPlay);
                     intentMain.putExtra("settingNoRate",booNoRate);
                     intentMain.putExtra("settingTimesRan", lngTimesRan);
                 } else {
+                    intentMain.putExtra("booTempDismiss", booTempDismiss);
                     intentMain.putExtra("intHighScoreTen", intHighScore);
                     intentMain.putExtra("intHighScoreFifteen", intHighScoreFifteen);
                     intentMain.putExtra("settingFirstPlay", booFirstPlay);

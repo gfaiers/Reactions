@@ -12,16 +12,18 @@
     <string name="banner_ad_unit_id_java">ca-app-pub-7494504958391964~3526958937</string>
 
     <string name="app_id">1032749079738</string>
+    <string name="package_name">com.gfaiers.reactions</string>
     <string name="achievement_perfect_10_seconds">CgkIurmRpYceEAIQAw</string>
     <string name="achievement_perfect_15_seconds">CgkIurmRpYceEAIQBA</string>
     <string name="achievement_50_seconds">CgkIurmRpYceEAIQBQ</string>
     <string name="achievement_500_seconds">CgkIurmRpYceEAIQBg</string>
-    <string name="achievement_5000_seconds">CgkIurmRpYceEAIQBw</string>
+    <string name="achievement_5000_seconds">CgkIurmRpYceEAIQDQ</string>
     <string name="achievement_50000_seconds">CgkIurmRpYceEAIQCA</string>
     <string name="achievement_75_seconds">CgkIurmRpYceEAIQCQ</string>
     <string name="achievement_750_seconds">CgkIurmRpYceEAIQCg</string>
     <string name="achievement_7500_seconds">CgkIurmRpYceEAIQCw</string>
     <string name="achievement_75000_seconds">CgkIurmRpYceEAIQDA</string>
+    <string name="achievement_secret_achievement">CgkIurmRpYceEAIQBw</string>
     <string name="leaderboard_ten_seconds">CgkIurmRpYceEAIQAQ</string>
     <string name="leaderboard_fifteen_seconds">CgkIurmRpYceEAIQAg</string>
 

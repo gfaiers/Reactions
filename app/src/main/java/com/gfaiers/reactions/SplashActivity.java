@@ -66,7 +66,7 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Games.Achievements.unlock(mGoogleApiClient, getResources().getString(R.string.achievement_secret_achievement));
                 // Take to the Play Store and load the app on there
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 //Try Google play
@@ -158,18 +158,6 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
                         requestCode, resultCode, R.string.sign_in_failure);
             }
         }
-    }
-
-    // Call when the sign-in button is clicked
-    private void signInClicked() {
-        mSignInClicked = true;
-        mGoogleApiClient.connect();
-    }
-
-    // Call when the sign-out button is clicked
-    private void signOutClicked() {
-        mSignInClicked = false;
-        Games.signOut(mGoogleApiClient);
     }
 
     public void loadGame(){

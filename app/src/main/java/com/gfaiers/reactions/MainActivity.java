@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     final static String PREFERENCE_SETTINGS = "settings";
     static int intHighScoreTen, intHighScoreFifteen, intGameLength;
-    static boolean booFirstPlay, booNoRate;
+    static boolean booFirstPlay, booNoRate, booTempDismiss;
     static long lngTimesRan;
     private AdView mAdView;
     private GoogleApiClient mGoogleApiClient;
@@ -62,14 +62,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         booFirstPlay = getIntent().getBooleanExtra("settingFirstPlay", true);
         booNoRate = getIntent().getBooleanExtra("settingNoRate", false);
         lngTimesRan = getIntent().getLongExtra("settingTimesRan", 0);
-
+        booTempDismiss = getIntent().getBooleanExtra("booTempDismiss", false);
         Button buttonNewGameShort = (Button) findViewById(R.id.buttonMainNewGameShort);
         Button buttonNewGameLong = (Button) findViewById(R.id.buttonMainNewGameLong);
         Button buttonHighScores = (Button) findViewById(R.id.buttonMainHighScores);
         Button buttonWebsite = (Button) findViewById(R.id.buttonMainWebsite);
 
 
-        if ((!booNoRate) && (lngTimesRan % 10 == 0)){
+        if ((!booNoRate) && (lngTimesRan % 10 == 0) && (!booTempDismiss)){
             RateMe(getResources().getString(R.string.enjoyed), getResources().getString(R.string.ok),
                     getResources().getString(R.string.not_yet), getResources().getString(R.string.never));
         }
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 intentNewGameShort.putExtra("settingFirstPlay", booFirstPlay);
                 intentNewGameShort.putExtra("settingNoRate",booNoRate);
                 intentNewGameShort.putExtra("settingTimesRan", lngTimesRan);
+                intentNewGameShort.putExtra("booTempDismiss", booTempDismiss);
                 intentNewGameShort.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivityForResult(intentNewGameShort, result);
             }
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 intentNewGameLong.putExtra("settingFirstPlay", booFirstPlay);
                 intentNewGameLong.putExtra("settingNoRate",booNoRate);
                 intentNewGameLong.putExtra("settingTimesRan", lngTimesRan);
+                intentNewGameLong.putExtra("booTempDismiss", booTempDismiss);
                 intentNewGameLong.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivityForResult(intentNewGameLong, result);
             }
@@ -283,6 +285,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                         Toast.makeText(MainActivity.this, getResources().getString(R.string.failed_load), Toast.LENGTH_SHORT).show();
                     }
                 }
+                booTempDismiss = true;
+                booNoRate = true;
                 dialog.dismiss();
             }
         });
@@ -293,6 +297,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         buttonNeutral.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                booTempDismiss = true;
                 dialog.dismiss();
             }
         });
@@ -304,6 +309,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             @Override
             public void onClick(View view) {
 
+                booTempDismiss = true;
                 booNoRate = true;
                 SharedPreferences settings = getSharedPreferences(PREFERENCE_SETTINGS, MODE_PRIVATE);
                 SharedPreferences.Editor editor = settings.edit();
